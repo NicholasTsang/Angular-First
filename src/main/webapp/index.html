@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="accountApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking Application</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Banking Application</a>
+            </div>
+        </div>
+    </nav>
+    <div class="dashboard panel panel-default" ng-controller="accountController as accountCtrl">
+	    <div class="panel-heading">Accounts page</div>
+	    <div class="panel-body">
+   		{{accountCtrl.test}}
+   		
+   		<div ng-hide="accountCtrl.isHidden">
+        	<h3><span>Accounts table</span></h3>
+        	<table class="table">
+        		<tr>
+        			<th ng-click="accountCtrl.orderAplha(firstName)">{{'firstname' | uppercase }}  </th>
+        			<th ng-click="accountCtrl.orderAplha('secondName')">{{'surname' | uppercase}}</th>
+        			<th>{{'account_number' | uppercase}}</th>
+        		</tr>
+        		<tr ng-repeat="account in accountCtrl.accounts | orderBy: accountCtrl.alpha"   >
+        			<td>{{account.firstName }}</td>
+        			<td>{{account.secondName}}</td>
+        			<td>{{account.accountNumber}}</td>
+        		</tr>
+        	</table>
+        </div>
+        <button class="btn"ng-click="accountCtrl.hideTable()">Hide accounts</button>
+        
+	</div>
+    
+	<link rel="stylesheet" href="scripts/bootstrap.min.css"> 
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/ui-router.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    
+    <script src="app/app.js"></script>
+    <script src="app/controllers/account-controller.js"></script>
+    </div>
+</body>
+</html>
